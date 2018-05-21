@@ -85,6 +85,10 @@
 			\end{tabular}
 		\end{center}
 	\end{table}
+
+	Az alapadatokból származtatott adatok:
+	
+	a1,a2,i1,i2
 	
 	\begin{flushleft}
 		A terheléseket arányosan és mindenhol a pozitív irányba vettem fel, hogy megegyezzen a feladatleírásban szereplő ábrával.
@@ -166,17 +170,87 @@
 		\caption{Méretarányos ábra és a terhelések}
 	\end{figure}
 	
+	Rajz a rekcióerők feltüntetésével:
+	rajz
+	
 	\newpage
 		
-	\section{Feladat}
-	This formula $f(x) = x^2$ is an example.
-	\begin{equation}
-	f(x)=x^2
-	\end{equation}
-	This formula $f(x) = x^2$ is an example.
-	\section{Feladat}
-	This formula $f(x) = x^2$ is an example.
+	\section{Feladat - Rugalmas szál differenciálegyenlete}
+		A rugalmas szál diffrenciálegyenletéhez a hajlítónyomatéki függvények felírása szükséges. A tartót 3 részre osztottam és mind a három tartományra felírhatam a hajlítónyomatéki függvényeket:
+		
+		hajlíto nyomatéki függvények..
+		
+		A rugalmas szál differenciálegyenlete a három tarományra:
+		
+		egyenletek...
+		
+		A differenciálegyenletek megoldásához illesztési feltételeket, kényszerfelételeket, illetve statikai egyensúlyt leíró egyenleteket is fel kell írni.
+		
+		Illesztési feltételek:
+		....
+		Kényszerek: 
+		....
+		Egyensúlyi egyenletek:
+		....
+		
+		A rugalmas szál differenciálegyenleteiből a lehajlásfüggvényeket kétszeres integrálással kaphatjuk meg. Az integrálások miatt 6[db] ismeretlen értékű integrálási konstans jelenik meg. Ezen hat ismeretlenen kívül, ismeretlenek még a reakcióerők $(F_{By}, F_{Dx}, F_{Dy}, M_{D})$.
+		
+		Így egy tíz ismeretlenes egyenletrendszer áll elő, amelyekhez 10 peremfeltételt határoztunk meg. Ennek megfelelően az egyenletrendszerből az összes ismeretlen meghatározható.
+		
+		Számolt értékek:
+		c-k, reakcioerok
+		
+		Ezek alapján az érékeket visszahelyettesítve a lehajlásfüggvényekbe:
+		lehajlásfüggvények a szakaszokon
+		
+		plotok :
+		szogelfordulás
+		hajlítonyomateki
 	
+	
+	\section{Feladat - Végeselemes megoldás}
+		A feladat szövege alapján a végeselemes modell:
+		vegeselemes modell (ábra) - 3 elem - 4 csomopont
+		
+		Elemi merevségi mátrix
+		
+		A 3[db] egyenes gerendaelem elemi merevségi mátrixait elhelyezzük a globális merevségi mátrixban a hozzájuk tarozó szabadsági fok összerendelések alapján.
+		
+		ábra - glob merev mátrix
+		
+		Ahol az általános elmozdulás és tehervektor:
+		vektorok...
+		
+		A tehervektor a koncentrált erők és megoszló terhelések összegeként írható fel. A megoszló erőt a két rúdra külön felírva:
+		koncentrált, megoszlo2, megoszlo3
+		
+		Az elmozdulásvektor megkötött paraméterei alapján kondenzáljuk a globális merevségi mátrixot úgy, hogy a merevségi mátrix oszlopait és sorait töröljük ott ahol az elmozdulásvektor nulla.
+		
+		A kondenzált merevségi mátrix:
+		vektor...
+		
+		A kondenzált elmozdulásvektor:
+		vektor...
+		
+		Az így alkotott $\textbf{K}_{kond}\cdot\textbf{U}_{kond}=\textbf{F}_{kond}$ egyenletrendszer megoldásával az elmozdulásvektor:
+		elmozdulásvektor...
+		
+		A tehervektort pedig az elmozdulásvektor visszahelyettesítésével:
+		tehervektor..
+		
+		A tehervektor komponenseiből kiolvashatóak a reakcióerők:
+		rekcióerok...
+		
+		A végeselemes megoldás útján kapott eredmények szinte teljesen megegyeznek a rugalmas szál differenciál egyenletével számolt eredményekkel.
+		
+		
+		
+		
+		
+		
+		
+	
+			
 	
 	
 	
