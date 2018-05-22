@@ -209,6 +209,7 @@
 	
 	
 	\section{Feladat - Végeselemes megoldás}
+	\subsection{A reakcióerők és az elmozdulásvektor meghatározása}
 		A feladat szövege alapján a végeselemes modell:
 		vegeselemes modell (ábra) - 3 elem - 4 csomopont
 		
@@ -242,16 +243,52 @@
 		rekcióerok...
 		
 		A végeselemes megoldás útján kapott eredmények szinte teljesen megegyeznek a rugalmas szál differenciál egyenletével számolt eredményekkel.
+	\subsection{Lehajlási és nyomatéki függvény meghatározása}
+		Harmadfokú polinommal történik az elmozdulásmező interpolációja.
+		polinom..
+		
+		Amely egyenletben a konstansok meghatározásához peremfeltételeket írhatunk fel:
+		peremfeltételek...
+		
+		A lokális mátrixot felírva az egyenletrendszer paramétereit behelyettesítve megkaphatjuk az alábbi vektort:
+		vektor...
+		
+	\subsubsection{A lokális vektorból globálisba történő átalakítás}	
+		A végeselemes módszernél a gerendaelemek lehajlását az alábbbi egyenlettel határozhatjuk meg:
+		egyenlet...
+		ahol i = 1,2,3.
+		
+		A kszi lokális koordinátából az x globális koordinátába való átállás:
+		keplet...
+		
+		Ez alapján már meghatározhatók a lehajlásfüggvények az egyes gerendaelemekre a globális koordinátarendszerben.
+		Ha ezeket a függvényeket 2x deriváljuk x szerint, akkor keresztmetszet nyomatékfüggvényeit kapjuk:
+		függvények...
+		
+		A rugalmas szál differenciálegyenletével és a VEM-es módszerrel kapott lehajlásfüggvények közel megegyeznek, annak ellenére hogy a hajlító nyomatéki függvény csak lináris részelemeket tartalmaz.
+		
+		Lehajlás- és nyomatéki függvény:
+		lehajlási, nyomatéki + ábra
+	\subsection{Relatív hiba számítása}	
+		A vk és Mhk értékek az x=c/2 helyen:
+		\begin{itemize}
+			\item Rugalmas szál differenciálegyenletével kapott értékek
+			\begin{equation}
+				salala = asla
+			\end{equation}
+			\item VEM-es módszerrel kapott értékek
+			\begin{equation}
+			salala = asla
+			\end{equation}
+		\end{itemize}
+		
+		A rugalmas szál diff. egyenletére vonatkoztatott relatív hiba:
+		képletek...
+		
+		Konklúzió melyik minel nagyobb hány százalékkal..
 		
 		
 		
-		
-		
-		
-		
-	
-			
-	
 	
 	
 
