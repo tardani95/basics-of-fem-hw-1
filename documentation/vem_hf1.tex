@@ -10,7 +10,7 @@
 \usepackage{pdfpages} % to include pdf
 \usepackage{structuralanalysis} % for the figures
 
-
+\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm,headsep=50pt]{geometry}
 
 \begin{document}
 	
@@ -69,38 +69,41 @@
 	
 	\section{Feladat}
 	
-	A házifeladat kód alapján az adatokat átszámolva $[N][mm][MPa]$ alapra:
-	
-	\begin{table}[h!]
-		\begin{center}
-			\caption{Adatok}
-			\label{tab:table1}
-			\begin{tabular}{c|c|c|c|c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-				$E$ & $d_{1}$ & $d_{2}$ & $a$ & $b$ & $c$ & $p_{1}$ & $F_{1}$ & $M_{1}$ \\
-				$[MPa]$ & $[mm]$ & $[mm]$ & $[mm]$ & $[mm]$ & $[mm]$ & $[N/mm]$ & $[N]$ & $[Nmm]$\\
-				\hline
-				$170\cdot10^3$ & 23 & 46 & 230 & 460 & 610 & -2.5 & -3000 & -0.75\\
-				%2 & 10.1 & b\\
-				%3 & 23.113231 & c\\
-			\end{tabular}
-		\end{center}
-	\end{table}
-
-	Az alapadatokból származtatott adatok:
-	
-	a1,a2,i1,i2
-	
-	\begin{flushleft}
+		A házifeladat kód alapján az adatokat átszámolva $[N][m][Pa]$ alapra:
+		\def\arraystretch{1.2}%
+		\begin{table}[h!]
+			\begin{center}
+				\caption{Adatok}
+				\label{tab:table1}
+				\begin{tabular}{c|c|c|c|c|c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					$E_1$  	&	$E_2$	& $d_{1}$ 	& $d_{2}$ & $a$ & $b$ & $c$ & $p_{1}$ & $F_{1}$ & $M_{1}$ \\
+					$[Pa]$ 	&	$[Pa]$	& $[m]$ 	& $[m]$ & $[m]$ & $[m]$ & $[m]$ & $[N/m]$ & $[N]$ & $[Nm]$\\
+					\hline
+					$170\cdot10^9$ & $28,33\cdot10^9$ & $23\cdot10^{-3}$ & $46\cdot10^{-3}$ & $230\cdot10^{-3}$ & $460\cdot10^{-3}$ & $610\cdot10^{-3}$ & -2500 & -3000 & -750\\
+				\end{tabular}
+			\end{center}
+		\end{table}\\[10pt]
+		\def\arraystretch{1}%
+		Az alapadatokból származtatott adatok (kereszmetszetek felületei, másodrendű nyomatékai):	
+		\begin{equation}
+		A_1=\frac{d_1^{2}\cdot\pi}{4}=4,1548 \cdot 10^{-4}~[m^{2}]
+		\end{equation}
+		\begin{equation}
+		A_2=\frac{d_2^{2}\cdot\pi}{4}=16,619 \cdot 10^{-4}~[m^{2}]
+		\end{equation}
+		\begin{equation}
+		I_{z1}=\frac{d_1^4\cdot\pi}{64}=1,3737 \cdot 10^{-8}~[m^{4}]
+		\end{equation}
+		\begin{equation}
+		I_{z2}=\frac{d_2^4\cdot\pi}{64}=21,9787 \cdot 10^{-8}~[m^{4}]
+		\end{equation}\\[10pt]
 		A terheléseket arányosan és mindenhol a pozitív irányba vettem fel, hogy megegyezzen a feladatleírásban szereplő ábrával.
-	\end{flushleft}
 	
 	%\newcommand{\newCommandName}{text to insert}
 	\newcommand{\degy}{8}
 	\newcommand{\dketto}{16}
 	
 	\begin{figure}[h!]
-		
-		
 		\begin{center}
 			\begin{tikzpicture}
 			\scaling{.015};
@@ -169,45 +172,91 @@
 		\end{center}	
 		\caption{Méretarányos ábra és a terhelések}
 	\end{figure}
-	
-	Rajz a rekcióerők feltüntetésével:
-	rajz
+
+
+	\begin{flushleft}
+		A rekcióerőket az pozitív x, y, és z irányoknak megfelelően vettem fel.
+	\end{flushleft}
 	
 	\newpage
-		
+
 	\section{Feladat - Rugalmas szál differenciálegyenlete}
+	%\subsection{Hajlítónyomatéki függvények}
 		A rugalmas szál diffrenciálegyenletéhez a hajlítónyomatéki függvények felírása szükséges. A tartót 3 részre osztottam és mind a három tartományra felírhatam a hajlítónyomatéki függvényeket:
-		
-		hajlíto nyomatéki függvények..
-		
+		\def\arraystretch{2}
+		\begin{table}[h!]
+			\begin{center}
+				\caption{Hajlítonyomatéki függvények}
+				\label{tab:table1}
+				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					${M_h}_1=\ -F_1\cdot x$ & $0\le x\le a$\\
+					${M_h}_2=\ -F_1\cdot x-F_B\cdot\left(x-a\right)-p_1\cdot\frac{\left(x-a\right)^2}{2}$ & $a\le x\le b$\\
+					${M_h}_3=\ -F_1\cdot x-F_B\cdot\left(x-a\right)-p_1\cdot\frac{\left(x-a\right)^2}{2}+M_1$ & $b\le x\le c$
+				\end{tabular}
+			\end{center}
+		\end{table}\\[10pt]
+		\def\arraystretch{1}%
 		A rugalmas szál differenciálegyenlete a három tarományra:
-		
-		egyenletek...
-		
+		\begin{equation}
+			v_1^{\prime\prime}\left[x\right]=\frac{Mh_1\left[x\right]}{I_{z2}\cdot E_2}
+		\end{equation}
+		\begin{equation}
+			v_2^{\prime\prime}\left[x\right]=\frac{Mh_2\left[x\right]}{I_{z2}\cdot E_2}
+		\end{equation}
+		\begin{equation}
+			v_3^{\prime\prime}\left[x\right]=\frac{Mh_3\left[x\right]}{I_{z1}\cdot E_1}
+		\end{equation}\\[10pt]
 		A differenciálegyenletek megoldásához illesztési feltételeket, kényszerfelételeket, illetve statikai egyensúlyt leíró egyenleteket is fel kell írni.
 		
 		Illesztési feltételek:
-		....
+		\begin{center}
+			$\phi_1(a)=\phi_2(a)$\\
+			$\phi_2(b)=\phi_3(b)$\\
+			$v_1(a)=v_2(a)$\\
+			$v_2(b)=v_3(b)$\\
+		\end{center}
+		
 		Kényszerek: 
-		....
+		\begin{center}
+			$v_1(a)=0$\\
+			$v_3(c)=0$\\
+			$\phi_3(c)=0$\\
+		\end{center}
+	
 		Egyensúlyi egyenletek:
-		....
-		
+		\begin{equation}
+			\sum{F_x=0} :\ \ \ F_{Dx}=0
+		\end{equation}
+		\begin{equation}
+			\sum{F_y=0} :\ \ \ F_1+F_{By}+p_1\cdot(c-a)+F_{Dy}=0
+		\end{equation}
+		\begin{equation}
+			\sum{M_D=0} :\ \ \ -F_1\cdot c-F_{By}\cdot(c-a)-p_1\cdot\frac{(c-a)^2}{2}+M_1+M_D=0
+		\end{equation}\\[10pt]		
 		A rugalmas szál differenciálegyenleteiből a lehajlásfüggvényeket kétszeres integrálással kaphatjuk meg. Az integrálások miatt 6[db] ismeretlen értékű integrálási konstans jelenik meg. Ezen hat ismeretlenen kívül, ismeretlenek még a reakcióerők $(F_{By}, F_{Dx}, F_{Dy}, M_{D})$.
-		
 		Így egy tíz ismeretlenes egyenletrendszer áll elő, amelyekhez 10 peremfeltételt határoztunk meg. Ennek megfelelően az egyenletrendszerből az összes ismeretlen meghatározható.
 		
-		Számolt értékek:
-		c-k, reakcioerok
-		
-		Ezek alapján az érékeket visszahelyettesítve a lehajlásfüggvényekbe:
-		lehajlásfüggvények a szakaszokon
-		
-		plotok :
-		szogelfordulás
-		hajlítonyomateki
-	
-	
+		A számolt értékek közül a reakcióerők:
+		\begin{center}
+			$v_1(a)=0$\\
+			$v_3(c)=0$\\
+			$\phi_3(c)=0$\\
+		\end{center}
+		Az érékeket visszahelyettesítve a lehajlás-$^{\ref{diff_lehaj}}$ és hajlítónyomatéki$^{\ref{diff_nyom}}$ függvényekbe, azokat ábrázolva: 
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[height=10cm]{images/diff_lehaj}
+			\end{center}
+			\caption{Lehajásfüggvény}
+			\label{diff_lehaj}
+		\end{figure}
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[height=10cm]{images/diff_nyomatek}
+			\end{center}
+			\caption{Hajlítónyomatéki függvény}
+			\label{diff_nyom}
+		\end{figure}
 	\section{Feladat - Végeselemes megoldás}
 	\subsection{A reakcióerők és az elmozdulásvektor meghatározása}
 		A feladat szövege alapján a végeselemes modell:
