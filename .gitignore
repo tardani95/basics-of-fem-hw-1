@@ -8,3 +8,5 @@ vem_hf1\.log
 vem_hf1\.synctex\.gz
 
 vem_hf1\.toc
+
+*.gnuplot
