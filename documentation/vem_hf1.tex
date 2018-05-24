@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[hungarian]{babel}
 
+\usepackage{amsmath}
+
 \usepackage{lipsum}
 \usepackage{graphicx} % for the includegrapichs
 \usepackage{titling}
@@ -9,7 +11,10 @@
 \usepackage{fancyhdr} % for the header on the first page
 \usepackage{pdfpages} % to include pdf
 \usepackage{structuralanalysis} % for the figures
-
+\usepackage{multicol}
+\usepackage{wasysym}
+\usepackage{t1enc}
+\usepackage{textcomp}
 \usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm,headsep=50pt]{geometry}
 
 \begin{document}
@@ -66,7 +71,9 @@
 
 	
 	%\newpage
-	
+	%---------------------
+	% 1.feladat
+	%---------------------
 	\section{Feladat}
 	
 		A házifeladat kód alapján az adatokat átszámolva $[N][m][Pa]$ alapra:
@@ -179,7 +186,9 @@
 	\end{flushleft}
 	
 	\newpage
-
+	%---------------------
+	% 2.feladat
+	%---------------------
 	\section{Feladat - Rugalmas szál differenciálegyenlete}
 	%\subsection{Hajlítónyomatéki függvények}
 		A rugalmas szál diffrenciálegyenletéhez a hajlítónyomatéki függvények felírása szükséges. A tartót 3 részre osztottam és mind a három tartományra felírhatam a hajlítónyomatéki függvényeket:
@@ -187,7 +196,7 @@
 		\begin{table}[h!]
 			\begin{center}
 				\caption{Hajlítonyomatéki függvények}
-				\label{tab:table1}
+				\label{tab:table2}
 				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					${M_h}_1=\ -F_1\cdot x$ & $0\le x\le a$\\
 					${M_h}_2=\ -F_1\cdot x-F_B\cdot\left(x-a\right)-p_1\cdot\frac{\left(x-a\right)^2}{2}$ & $a\le x\le b$\\
@@ -238,9 +247,10 @@
 		
 		A számolt értékek közül a reakcióerők:
 		\begin{center}
-			$v_1(a)=0$\\
-			$v_3(c)=0$\\
-			$\phi_3(c)=0$\\
+			$F_B = 3639,0266~[N]$\\
+			$F_{Dx} = 0~[N]$\\
+			$F_{Dy} = 310,9734~[N]$\\
+			$M_D = 122,3301~[Nm]$
 		\end{center}
 		Az érékeket visszahelyettesítve a lehajlás-$^{\ref{diff_lehaj}}$ és hajlítónyomatéki$^{\ref{diff_nyom}}$ függvényekbe, azokat ábrázolva: 
 		\begin{figure}[h!]
@@ -250,6 +260,7 @@
 			\caption{Lehajásfüggvény}
 			\label{diff_lehaj}
 		\end{figure}
+	\newpage
 		\begin{figure}[h!]
 			\begin{center}
 				\includegraphics[height=10cm]{images/diff_nyomatek}
@@ -257,50 +268,219 @@
 			\caption{Hajlítónyomatéki függvény}
 			\label{diff_nyom}
 		\end{figure}
+	
+	%---------------------
+	% 3.feladat
+	%---------------------
 	\section{Feladat - Végeselemes megoldás}
 	\subsection{A reakcióerők és az elmozdulásvektor meghatározása}
 		A feladat szövege alapján a végeselemes modell:
-		vegeselemes modell (ábra) - 3 elem - 4 csomopont
-		
-		Elemi merevségi mátrix
-		
-		A 3[db] egyenes gerendaelem elemi merevségi mátrixait elhelyezzük a globális merevségi mátrixban a hozzájuk tarozó szabadsági fok összerendelések alapján.
-		
-		ábra - glob merev mátrix
-		
+		\newcommand{\sugar}{2}
+		\newcommand{\ab}{230}
+		\newcommand{\ac}{460}
+		\newcommand{\ad}{610}
+		\newcommand{\adv}{610}
+		\newcommand{\advv}{610}
+		\begin{figure}[h!]		
+			\begin{center}	
+				\begin{tikzpicture}
+				\scaling{.022};
+				% auxiliary points
+				\point{a}{0}{0};
+				\point{b}{\ab}{0};
+				\point{b1}{\ab*2}{0};
+				\point{c}{\ac}{0};
+				\point{d}{\ad}{0};
+				\point{d2}{210}{35};
+				
+				\beam{2}{a}{b};
+				\beam{2}{b}{c};
+				\beam{2}{c}{d};
+				
+				\support{2}{b};
+				\support{3}{d}[90];
+				
+				\hinge{1}{a};
+				\hinge{1}{b};
+				\hinge{1}{c};
+				
+				\notation{1}{a}{$(1)$}[above];
+				\notation{1}{b}{$(2)$}[above];
+				\notation{1}{c}{$(3)$}[above];
+				\notation{1}{d}{$(4)$}[above left];
+				
+				\notation{5}{a}{b}[$I, E, A$][.5][below];
+				\notation{5}{b}{c}[$I, E, A$][.5][below];
+				\notation{5}{c}{d}[$I, E, A$][.5][below];
+				
+				\notation{4}{a}{b}[1]
+				\notation{4}{b}{c}[2]
+				\notation{4}{c}{d}[3] 
+				\end{tikzpicture}
+			\end{center}	
+			\caption{Végeselemes modell}
+		\end{figure}\\[10pt]	
+		Elemi merevségi mátrix:
+		\begin{equation}
+		K_{e,4\times4}= \frac{I_{z} \cdot E}{L^3}  
+			\begin{bmatrix}
+			12&6L&-12&6L\\
+			6L&4L^2&-6L&2L^2\\
+			-12&-6L&12&-6L\\
+			6L&2L^2&-6L&4L^2\\
+			\end{bmatrix}
+			=\begin{bmatrix}
+			K_{11} &K_{12} \\
+			K_{21} &K_{22} \\
+			\end{bmatrix}
+		\end{equation}\\[10pt]
+		A 3[db] egyenes gerendaelem elemi merevségi mátrixait elhelyezzük a globális merevségi mátrixban a hozzájuk tarozó szabadsági fok összerendelések alapján.\\[10pt]
+		Globális merevségi mátrix:
+		\begin{equation}
+		K_{G,8\times8}=
+		\begin{bmatrix}
+		K_{11}^{(1)} & K_{12}^{(1)}              & 0            			    & 0            \\
+		K_{21}^{(1)} & K_{22}^{(1)}+K_{11}^{(2)} & K_{12}^{(2)}  			    & 0            \\
+		0            & K_{21}^{(2)}              & K_{22}^{(2)} + K_{11}^{(3)}  & K_{12}^{(3)} \\
+		0            & 0						 & K_{21}^{(3)} 					& K_{22}^{(3)} \\
+		\end{bmatrix}
+		\end{equation}
 		Ahol az általános elmozdulás és tehervektor:
-		vektorok...
-		
+		\begin{equation}
+			{\underline{U}}^T=[V_1\ \ \Theta_1\ \ V_2\ \ \Theta_2\ \ V_3\ \ \Theta_3\ \ V_4\ \ \Theta_4]
+		\end{equation}
+		\begin{equation}
+			{\underline{F}}^T=[f_1\ \ m_1\ \ f_2\ \ m_2\ \ f_3\ \ m_3\ \ f_4\ \ m_4] 
+		\end{equation}
 		A tehervektor a koncentrált erők és megoszló terhelések összegeként írható fel. A megoszló erőt a két rúdra külön felírva:
-		koncentrált, megoszlo2, megoszlo3
-		
+		\def\arraystretch{2}
+		\begin{table}[h!]
+			\begin{center}
+				\caption{Tehervektor részei}
+				\label{tab:table3}
+				\begin{tabular}{l c r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					$F_{konc}=
+					\begin{bmatrix}
+						F_{1}    \\
+						0\\
+						0\\
+						0\\
+						0\\
+						M_{1} \\
+						0\\
+						0\\
+					\end{bmatrix} [SI]$ \ \ \ \ \ \ & 
+					$F_{1_{rud_2}}= p_1 \cdot \frac{L_2}{12}
+					\begin{bmatrix}
+						0\\
+						0\\
+						6\\
+						L_{2} \\
+						6\\
+						-L_{2} \\
+						0\\
+						0\\
+						\end{bmatrix} [SI]$  \ \ \ \ \ \ & 
+					$F_{1_{rud_3}}= p_1 \cdot \frac{L_3}{12}
+					\begin{bmatrix}
+						0\\
+						0\\
+						0\\
+						0\\
+						6\\
+						L_{3} \\
+						6\\
+						-L_{3} \\
+					\end{bmatrix} [SI]$
+				\end{tabular}
+			\end{center}
+		\end{table}\\[10pt]
+		\def\arraystretch{1}%
 		Az elmozdulásvektor megkötött paraméterei alapján kondenzáljuk a globális merevségi mátrixot úgy, hogy a merevségi mátrix oszlopait és sorait töröljük ott ahol az elmozdulásvektor nulla.
 		
 		A kondenzált merevségi mátrix:
-		vektor...
+		\begin{equation}
+		K_{G,K,5\times5}=
+		\begin{bmatrix}
+		K_{G_{11}}	 & K_{G_{12}}	 & K_{G_{14}} & K_{G_{15}}	 & K_{G_{16}}  \\
+		K_{G_{21}}	 & K_{G_{22}}	 & K_{G_{24}} & K_{G_{25}}	 & K_{G_{26}}  \\
+		K_{G_{41}}	 & K_{G_{42}}	 & K_{G_{44}} & K_{G_{45}}	 & K_{G_{46}}  \\
+		K_{G_{51}}	 & K_{G_{52}}	 & K_{G_{54}} & K_{G_{55}}	 & K_{G_{56}}  \\
+		K_{G_{61}}	 & K_{G_{62}}	 & K_{G_{64}} & K_{G_{65}}	 & K_{G_{66}}  \\
+		\end{bmatrix}
+		\end{equation}
 		
 		A kondenzált elmozdulásvektor:
-		vektor...
-		
+		\begin{equation}
+			\textbf{U}_{kond}=
+			\begin{bmatrix}
+			V_{1}    \\
+			\Theta_{1} \\
+			\Theta_{2} \\
+			V_{3}    \\
+			\Theta_{3} \\
+			\end{bmatrix} [SI]
+		\end{equation}\\[10pt]
 		Az így alkotott $\textbf{K}_{kond}\cdot\textbf{U}_{kond}=\textbf{F}_{kond}$ egyenletrendszer megoldásával az elmozdulásvektor:
-		elmozdulásvektor...
-		
+		\begin{equation}
+			\textbf{U}=
+			\begin{bmatrix}-0.0053\\
+			0.0276\\
+			0\\
+			0.0148\\
+			6.4165 {{10}^{-4}}\\
+			-0.0088\\
+			0\\
+			0
+			\end{bmatrix} [SI]
+		\end{equation}
 		A tehervektort pedig az elmozdulásvektor visszahelyettesítésével:
-		tehervektor..
-		
+		\begin{equation}
+			\textbf{F}=
+			\begin{bmatrix}-3000\\
+			0\\
+			3351.5266\\
+			-11.0208\\
+			-475\\
+			-743.6667\\
+			123.4734\\
+			127.0176
+			\end{bmatrix} [SI]
+		\end{equation}
 		A tehervektor komponenseiből kiolvashatóak a reakcióerők:
-		rekcióerok...
-		
+		\begin{equation}
+			\textbf{F}_{reak}=
+			\begin{bmatrix}
+			0\\
+			0\\
+			3639.026588296437\\
+			0\\
+			0\\
+			0\\
+			310.9734117035641\\
+			122.3301035526437
+			\end{bmatrix} [SI]
+		\end{equation}
 		A végeselemes megoldás útján kapott eredmények szinte teljesen megegyeznek a rugalmas szál differenciál egyenletével számolt eredményekkel.
 	\subsection{Lehajlási és nyomatéki függvény meghatározása}
 		Harmadfokú polinommal történik az elmozdulásmező interpolációja.
-		polinom..
-		
+		\begin{equation}
+			w(x)=a_0+a_1\xi+a_2\xi^2+a_3\xi^3
+		\end{equation}
 		Amely egyenletben a konstansok meghatározásához peremfeltételeket írhatunk fel:
-		peremfeltételek...
-		
+	    \begin{center}
+	    	$w\left(x=0\right)=v_i$\\
+	    	$\frac{dw\left(x\right)}{dx}\left(x=0\right)=\mathrm{\Theta}_i$\\
+	    	$w\left(x=L\right)=v_j$\\
+	    	$\frac{dw\left(x\right)}{dx}\left(x=L\right)=\mathrm{\Theta}_j$\\	
+	    \end{center}
 		A lokális mátrixot felírva az egyenletrendszer paramétereit behelyettesítve megkaphatjuk az alábbi vektort:
-		vektor...
+		\begin{equation}
+			\begin{bmatrix}2 {{\xi}^{3}}-3 {{\xi}^{2}}+1\\
+			L\, {{\xi}^{3}}-2 L\, {{\xi}^{2}}+L \xi\\
+			3 {{\xi}^{2}}-2 {{\xi}^{3}}\\
+			L\, {{\xi}^{3}}-L\, {{\xi}^{2}}\end{bmatrix}
+		\end{equation}
 		
 	\subsubsection{A lokális vektorból globálisba történő átalakítás}	
 		A végeselemes módszernél a gerendaelemek lehajlását az alábbbi egyenlettel határozhatjuk meg:
