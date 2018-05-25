@@ -52,8 +52,8 @@
 	    	\put(415,677){2}
 	    	\put(116,63){0,8096}
 	    	\put(238,63){652,5147}
-	    	\put(369,63){-0,54}
-	    	\put(490,63){-0,28}
+	    	\put(369,63){-0,28}
+	    	\put(490,63){-0,54}
 	 }]{vemalaphf1.pdf}
 	\newpage
 	
@@ -82,11 +82,11 @@
 			\begin{center}
 				\caption{Adatok}
 				\label{tab:table1}
-				\begin{tabular}{c|c|c|c|c|c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					$E_1$  	&	$E_2$	& $d_{1}$ 	& $d_{2}$ & $a$ & $b$ & $c$ & $p_{1}$ & $F_{1}$ & $M_{1}$ \\
-					$[Pa]$ 	&	$[Pa]$	& $[m]$ 	& $[m]$ & $[m]$ & $[m]$ & $[m]$ & $[N/m]$ & $[N]$ & $[Nm]$\\
+				\begin{tabular}{c|c|c|c|c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					$E$  	& $d_{1}$ 	& $d_{2}$ & $a$ & $b$ & $c$ & $p_{1}$ & $F_{1}$ & $M_{1}$ \\
+					$[Pa]$ 	& $[m]$ 	& $[m]$ & $[m]$ & $[m]$ & $[m]$ & $[N/m]$ & $[N]$ & $[Nm]$\\
 					\hline
-					$170\cdot10^9$ & $28,33\cdot10^9$ & $23\cdot10^{-3}$ & $46\cdot10^{-3}$ & $230\cdot10^{-3}$ & $460\cdot10^{-3}$ & $610\cdot10^{-3}$ & -2500 & -3000 & -750\\
+					$170\cdot10^9$ & $23\cdot10^{-3}$ & $46\cdot10^{-3}$ & $230\cdot10^{-3}$ & $460\cdot10^{-3}$ & $610\cdot10^{-3}$ & -2500 & -3000 & -750\\
 				\end{tabular}
 			\end{center}
 		\end{table}\\[10pt]
@@ -233,29 +233,25 @@
 		\end{center}
 	
 		Egyensúlyi egyenletek:
-		\begin{equation}
-			\sum{F_x=0} :\ \ \ F_{Dx}=0
-		\end{equation}
-		\begin{equation}
-			\sum{F_y=0} :\ \ \ F_1+F_{By}+p_1\cdot(c-a)+F_{Dy}=0
-		\end{equation}
-		\begin{equation}
-			\sum{M_D=0} :\ \ \ -F_1\cdot c-F_{By}\cdot(c-a)-p_1\cdot\frac{(c-a)^2}{2}+M_1+M_D=0
-		\end{equation}\\[10pt]		
+		\begin{align}
+			\sum{F_x=0} :&\ \ \ F_{Dx}=0\\
+			\sum{F_y=0} :&\ \ \ F_1+F_{By}+p_1\cdot(c-a)+F_{Dy}=0\\
+			\sum{M_D=0} :&\ \ \ -F_1\cdot c-F_{By}\cdot(c-a)-p_1\cdot\frac{(c-a)^2}{2}+M_1+M_D=0
+		\end{align}\\[10pt]		
 		A rugalmas szál differenciálegyenleteiből a lehajlásfüggvényeket kétszeres integrálással kaphatjuk meg. Az integrálások miatt 6[db] ismeretlen értékű integrálási konstans jelenik meg. Ezen hat ismeretlenen kívül, ismeretlenek még a reakcióerők $(F_{By}, F_{Dx}, F_{Dy}, M_{D})$.
 		Így egy tíz ismeretlenes egyenletrendszer áll elő, amelyekhez 10 peremfeltételt határoztunk meg. Ennek megfelelően az egyenletrendszerből az összes ismeretlen meghatározható.
 		
 		A számolt értékek közül a reakcióerők:
-		\begin{center}
-			$F_B = 3639,0266~[N]$\\
-			$F_{Dx} = 0~[N]$\\
-			$F_{Dy} = 310,9734~[N]$\\
-			$M_D = 122,3301~[Nm]$
-		\end{center}
+		\begin{align*}
+			F_B &= 3639,0266~[N]\\
+			F_{Dx} &= 0~[N]\\
+			F_{Dy} &= 310,9734~[N]\\
+			M_D &= 122,3301~[Nm]
+		\end{align*}
 		Az érékeket visszahelyettesítve a lehajlás-$^{\ref{diff_lehaj}}$ és hajlítónyomatéki$^{\ref{diff_nyom}}$ függvényekbe, azokat ábrázolva: 
 		\begin{figure}[h!]
 			\begin{center}
-				\includegraphics[height=10cm]{images/diff_lehaj}
+				\includegraphics[height=8.5cm]{images/diff_lehaj}
 			\end{center}
 			\caption{Lehajásfüggvény}
 			\label{diff_lehaj}
@@ -263,12 +259,12 @@
 	\newpage
 		\begin{figure}[h!]
 			\begin{center}
-				\includegraphics[height=10cm]{images/diff_nyomatek}
+				\includegraphics[height=8.5cm]{images/diff_nyomatek}
 			\end{center}
 			\caption{Hajlítónyomatéki függvény}
 			\label{diff_nyom}
 		\end{figure}
-	
+	Nevezetes pontokat a WxMaxima fájl tartalmazza.
 	%---------------------
 	% 3.feladat
 	%---------------------
@@ -468,12 +464,12 @@
 			w(x)=a_0+a_1\xi+a_2\xi^2+a_3\xi^3
 		\end{equation}
 		Amely egyenletben a konstansok meghatározásához peremfeltételeket írhatunk fel:
-	    \begin{center}
-	    	$w\left(x=0\right)=v_i$\\
-	    	$\frac{dw\left(x\right)}{dx}\left(x=0\right)=\mathrm{\Theta}_i$\\
-	    	$w\left(x=L\right)=v_j$\\
-	    	$\frac{dw\left(x\right)}{dx}\left(x=L\right)=\mathrm{\Theta}_j$\\	
-	    \end{center}
+	    \begin{align*}
+	    	w(x=0)&=v_i\\
+	    	\frac{dw(x)}{dx}(x=0)&=\mathrm{\Theta}_i\\
+	    	w(x=L)&=v_j\\
+	    	\frac{dw(x)}{dx}(x=L)&=\mathrm{\Theta}_j\\	
+	    \end{align*}
 		A lokális mátrixot felírva az egyenletrendszer paramétereit behelyettesítve megkaphatjuk az alábbi vektort:
 		\begin{equation}
 			\begin{bmatrix}2 {{\xi}^{3}}-3 {{\xi}^{2}}+1\\
@@ -484,41 +480,55 @@
 		
 	\subsubsection{A lokális vektorból globálisba történő átalakítás}	
 		A végeselemes módszernél a gerendaelemek lehajlását az alábbbi egyenlettel határozhatjuk meg:
-		egyenlet...
-		ahol i = 1,2,3.
-		
-		A kszi lokális koordinátából az x globális koordinátába való átállás:
-		keplet...
-		
+		\begin{equation}
+			v_i[\xi]=N[\xi]\cdot U_i
+		\end{equation}
+		ahol i = 1,2,3.\\[10pt]		
+		A $\xi$ lokális koordinátából az $x$ globális koordinátába való átállás:
+		\begin{equation}
+			\xi_i=\frac{x-x_i}{L_{i}}
+		\end{equation}
 		Ez alapján már meghatározhatók a lehajlásfüggvények az egyes gerendaelemekre a globális koordinátarendszerben.
-		Ha ezeket a függvényeket 2x deriváljuk x szerint, akkor keresztmetszet nyomatékfüggvényeit kapjuk:
-		függvények...
-		
-		A rugalmas szál differenciálegyenletével és a VEM-es módszerrel kapott lehajlásfüggvények közel megegyeznek, annak ellenére hogy a hajlító nyomatéki függvény csak lináris részelemeket tartalmaz.
-		
-		Lehajlás- és nyomatéki függvény:
-		lehajlási, nyomatéki + ábra
+		Ha ezeket a függvényeket 2x deriváljuk $x$ szerint, akkor keresztmetszet nyomatékfüggvényeit kapjuk, ezeket a függvényeket WxMaxima program segítségével ábrázolva:
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[height=8cm]{images/vem_lehaj}
+			\end{center}
+			\caption{Lehajásfüggvény}
+			\label{vem_lehaj}
+		\end{figure}
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[height=8cm]{images/vem_nyomatek}
+			\end{center}
+			\caption{Hajlítónyomatéki függvény}
+			\label{vem_nyom}
+		\end{figure}\\[10pt]
+		A rugalmas szál differenciálegyenletével és a VEM-es módszerrel kapott lehajlásfüggvények közel megegyeznek, annak ellenére hogy a hajlító nyomatéki függvény csak lináris részelemeket tartalmaz.\\[10pt]
+		A nevezetes pontokat a WxMaxima fájl tartalmazza.
 	\subsection{Relatív hiba számítása}	
-		A vk és Mhk értékek az x=c/2 helyen:
+		A $v_k$ és $M_{h_k}$ értékek az $x=c/2$ helyen:
 		\begin{itemize}
 			\item Rugalmas szál differenciálegyenletével kapott értékek
 			\begin{equation}
-				salala = asla
+				M_{h_{diff}} = 649,1043~[Nm]
+			\end{equation}
+			\begin{equation}
+				v_{diff} = 0,8074~[mm]
 			\end{equation}
 			\item VEM-es módszerrel kapott értékek
 			\begin{equation}
-			salala = asla
+				M_{h_{VEM}} = 652,614~[Nm]
+			\end{equation}
+			\begin{equation}
+				v_{VEM} = 0,8096~[mm]
 			\end{equation}
 		\end{itemize}
 		
 		A rugalmas szál diff. egyenletére vonatkoztatott relatív hiba:
-		képletek...
-		
-		Konklúzió melyik minel nagyobb hány százalékkal..
-		
-		
-		
-	
-	
-
+		\begin{align}
+			H_{M_{hK}}=\frac{M_{h_{diff}}(\frac{c}{2})-M_{h_{VEM}}(\frac{c}{2})}{M_{h_{diff}}(\frac{c}{2})}&=-0,0054~=> -0,54 \%\\
+			H_{v_K}=\frac{v_{diff}(\frac{c}{2})-v_{VEM}(\frac{c}{2})}{v_{diff}(\frac{c}{2})}&=-0,0028~=> -0,28\%
+		\end{align}
+		A végeselemes módszerrel nagyobb eredményeket kaptam, mint az analitikus módon, bár ez a különbség elhanyagolhatóan kicsi, így plusz biztonsághoz is jutunk vele.
 \end{document}
